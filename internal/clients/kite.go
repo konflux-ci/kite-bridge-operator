@@ -69,13 +69,13 @@ func NewKiteClient(baseURL string, logger *logrus.Logger) *KiteClient {
 
 // ReportPipelineFailure uses KITE's webhook endpoint for pipeline failures
 func (k *KiteClient) ReportPipelineFailure(payload PipelineFailurePayload) error {
-	url := fmt.Sprintf("%s/api/v1/webhooks/pipeline-failure", k.baseURL)
+	url := fmt.Sprintf("%s/api/v1/webhooks/pipeline-failure?namespace=%s", k.baseURL, payload.Namespace)
 	return k.sendWebhook(url, payload, "pipeline-failure")
 }
 
 // ReportPipelineSuccess uses KITE's webhook endpoint for pipeline success
 func (k *KiteClient) ReportPipelineSuccess(payload PipelineSuccessPayload) error {
-	url := fmt.Sprintf("%s/api/v1/webhooks/pipeline-success", k.baseURL)
+	url := fmt.Sprintf("%s/api/v1/webhooks/pipeline-success?namespace=%s", k.baseURL, payload.Namespace)
 	return k.sendWebhook(url, payload, "pipeline-success")
 }
 
