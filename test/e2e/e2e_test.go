@@ -31,7 +31,7 @@ import (
 )
 
 // namespace where the project is deployed in
-const namespace = "operator-system"
+const namespace = "kite-bridge-operator-system"
 
 // serviceAccountName created for the project
 const serviceAccountName = "operator-controller-manager"
@@ -64,6 +64,8 @@ var _ = Describe("Manager", Ordered, func() {
 		cmd = exec.Command("make", "install")
 		_, err = utils.Run(cmd)
 		Expect(err).NotTo(HaveOccurred(), "Failed to install CRDs")
+
+		var projectImage = "example.com/kite-bridge-operator:v0.0.1"
 
 		By("deploying the controller-manager")
 		cmd = exec.Command("make", "deploy", fmt.Sprintf("IMG=%s", projectImage))
