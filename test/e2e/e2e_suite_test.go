@@ -25,7 +25,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/konflux-ci/kite/bridge-operator/test/utils"
+	"github.com/konflux-ci/kite-bridge-operator/test/utils"
 )
 
 var (
