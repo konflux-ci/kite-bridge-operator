@@ -13,6 +13,10 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+type KiteWebhookClient interface {
+	ReportPipelineFailure(payload PipelineFailurePayload) error
+	ReportPipelineSuccess(payload PipelineSuccessPayload) error
+}
 type KiteClient struct {
 	baseURL    string
 	httpClient *http.Client

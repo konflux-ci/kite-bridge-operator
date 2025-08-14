@@ -35,7 +35,7 @@ import (
 type PipelineRunReconciler struct {
 	client.Client
 	Scheme     *runtime.Scheme
-	KiteClient *clients.KiteClient
+	KiteClient clients.KiteWebhookClient
 	Logger     *logrus.Logger
 }
 
