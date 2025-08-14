@@ -161,7 +161,7 @@ func (r *PipelineRunReconciler) handlePipelineRunSuccess(ctx context.Context, pr
 func (r *PipelineRunReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
 		// Uncomment the following line adding a pointer to an instance of the controlled resource as an argument
-		// For().
+		For(&v1.PipelineRun{}).
 		Named("pipelinerun").
 		Complete(r)
 }
